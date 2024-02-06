@@ -13,11 +13,17 @@
 		"format:fix": "prettier ./src --write"
 	},
 	"dependencies": {
+		"@tanstack/react-query": "^5.18.1",
+		"@tanstack/react-query-devtools": "^5.18.1",
+		"@tanstack/react-router": "^1.15.19",
+		"@tanstack/router-devtools": "^1.15.19",
+		"@tanstack/router-vite-plugin": "^1.15.18",
 		"eslint-config-prettier": "^9.1.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
 	},
 	"devDependencies": {
+		"@types/node": "^20.11.16",
 		"@types/react": "^18.2.43",
 		"@types/react-dom": "^18.2.17",
 		"@typescript-eslint/eslint-plugin": "^6.20.0",
