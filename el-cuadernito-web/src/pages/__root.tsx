@@ -26,8 +26,7 @@ function RootComponent() {
 		<>
 			<Outlet />
 			<CssBaseline />
-			<ReactQueryDevtools buttonPosition="top-right" />
-			<TanStackRouterDevtools position="bottom-right" />
+			<ReactQueryDevtools buttonPosition="bottom-left" />
 		</>
 	);
 }

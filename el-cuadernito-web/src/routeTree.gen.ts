@@ -18,7 +18,6 @@ import { Route as IndexImport } from './pages/index'
 // Create Virtual Routes
 
 const SignInIndexLazyImport = createFileRoute('/sign-in/')()
-const SignInCallbackLazyImport = createFileRoute('/sign-in/callback')()
 
 // Create/Update Routes
 
@@ -32,23 +31,12 @@ const SignInIndexLazyRoute = SignInIndexLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./pages/sign-in/index.lazy').then((d) => d.Route))
 
-const SignInCallbackLazyRoute = SignInCallbackLazyImport.update({
-  path: '/sign-in/callback',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() =>
-  import('./pages/sign-in/callback.lazy').then((d) => d.Route),
-)
-
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
       preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/sign-in/callback': {
-      preLoaderRoute: typeof SignInCallbackLazyImport
       parentRoute: typeof rootRoute
     }
     '/sign-in/': {
@@ -62,7 +50,6 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
-  SignInCallbackLazyRoute,
   SignInIndexLazyRoute,
 ])
 

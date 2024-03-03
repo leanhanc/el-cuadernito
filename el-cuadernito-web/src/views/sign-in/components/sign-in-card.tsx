@@ -13,7 +13,13 @@ import {
 /* Styles */
 const SignInCardContainer = styled(Card)<CardProps>`
 	padding: 2rem;
-	width: 31rem;
+	width: 420px;
+`;
+
+const Title = styled(Typography)`
+	font-weight: 500;
+	text-wrap: pretty;
+	margin-bottom: 2rem;
 `;
 
 export default function SignInCard() {
@@ -43,19 +49,18 @@ export default function SignInCard() {
 	return (
 		<SignInCardContainer>
 			<CardContent>
-				<Typography variant="h4" component={'h1'} color="text.secondary">
-					Sign-In
-				</Typography>
+				<Title variant="body2">
+					Sign in with your Google Account to open your Cuadernito.
+				</Title>
+				<Button
+					variant="contained"
+					color="primary"
+					onClick={() => signIn()}
+					fullWidth
+				>
+					Sign in with Google
+				</Button>
 			</CardContent>
-
-			<Button
-				variant="contained"
-				color="primary"
-				onClick={() => signIn()}
-				fullWidth
-			>
-				Sign in with Google
-			</Button>
 		</SignInCardContainer>
 	);
 }
