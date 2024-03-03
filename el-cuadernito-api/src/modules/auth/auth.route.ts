@@ -18,27 +18,28 @@ export function authRoutes() {
 	const auth: App = new Hono();
 
 	auth.post(
-		'register',
+		'sign-in/google',
 		zValidator(
 			'json',
 			z.object({
-				email: z
-					.string()
-					.min(1, 'Please provide an e-mail.')
-					.email('Please provide a valid e-mail address.'),
-				password: z
-					.string()
-					.min(6, 'Please provide a password with at least 6 characters.'),
+				code: z.string().min(1, 'Please provide your Authorization Code.'),
 			}),
 		),
 		async (c) => {
+			const { code } = c.req.valid('json');
 			const db = c.get('db');
-			const { email, password } = c.req.valid('json');
+			const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, TOKEN_SECRET } = c.env;
 
 			try {
-				const newUserId = await authService.signUp({ db, email, password });
+				const result = await authService.signIn({
+					db,
+					code,
+					googleClientId: GOOGLE_CLIENT_ID,
+					googleClientSecret: GOOGLE_CLIENT_SECRET,
+					tokenSecret: TOKEN_SECRET,
+				});
 
-				return c.json({ newUserId });
+				return c.json(result);
 			} catch (error) {
 				if (error instanceof HTTPException) {
 					return error.getResponse();

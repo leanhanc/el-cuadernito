@@ -1,9 +1,14 @@
 import ReactDOM from 'react-dom/client';
 
-/* TanStac k*/
+/* TanStack*/
 import { RouterProvider, createRouter } from '@tanstack/react-router';
-import { routeTree } from './routeTree.gen';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { routeTree } from './routeTree.gen';
+
+/* Material UI */
+import { ThemeProvider } from '@mui/material';
+import theme from '@/lib/styles/theme';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const queryClient = new QueryClient();
 
@@ -22,12 +27,12 @@ declare module '@tanstack/react-router' {
 	}
 }
 
-const rootElement = document.getElementById('app')!;
-
-const root = ReactDOM.createRoot(rootElement);
-
-root.render(
-	<QueryClientProvider client={queryClient}>
-		<RouterProvider router={router} />
-	</QueryClientProvider>,
+ReactDOM.createRoot(document.getElementById('app')!).render(
+	<GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+		<QueryClientProvider client={queryClient}>
+			<ThemeProvider theme={theme}>
+				<RouterProvider router={router} />
+			</ThemeProvider>
+		</QueryClientProvider>
+	</GoogleOAuthProvider>,
 );

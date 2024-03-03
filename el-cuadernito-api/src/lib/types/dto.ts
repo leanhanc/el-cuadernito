@@ -1,7 +1,5 @@
-import { NeonHttpDatabase } from 'drizzle-orm/neon-http';
+import { Database } from '@lib/types/db';
 
-interface Database {
-	db: NeonHttpDatabase<Record<string, never>>;
+export interface WithDatabase {
+	db: Database;
 }
-
-export type BaseDto = Database & Record<string, unknown>;

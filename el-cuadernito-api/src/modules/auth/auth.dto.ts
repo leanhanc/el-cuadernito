@@ -1,6 +1,8 @@
-import { BaseDto } from '@lib/types';
+import { WithDatabase } from '@lib/types/dto';
 
-export interface SignUpDto extends BaseDto {
-	email: string;
-	password: string;
+export interface SignInDto extends WithDatabase {
+	code: string;
+	googleClientId: string;
+	googleClientSecret: string;
+	tokenSecret: string;
 }

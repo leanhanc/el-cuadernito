@@ -29,7 +29,7 @@ export function addSecurityMiddleware(app: App): App {
 	/* CORS */
 	app.use('*', async (c, next) => {
 		const corsMiddleware = cors({
-			origin: '',
+			origin: c.env.FRONTEND_APP_URL,
 			allowHeaders: ['Origin', 'Content-Type', 'Authorization'],
 			allowMethods: ['GET', 'OPTIONS', 'POST', 'PUT', 'DELETE'],
 		});

@@ -1,5 +1,4 @@
 # Logs
-
 logs
 _.log
 npm-debug.log_
@@ -170,3 +169,5 @@ dist
 
 .dev.vars
 .wrangler/
+
+.DS_Store

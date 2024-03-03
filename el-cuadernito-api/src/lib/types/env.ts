@@ -1,13 +1,16 @@
+import { Database } from '@lib/types/db';
 import type { Context, Hono } from 'hono';
-import { NeonHttpDatabase } from 'drizzle-orm/neon-http';
 
 export interface Env {
 	Bindings: {
-		ALLOWED_ORIGINS: string;
 		DATABASE_URL: string;
+		GOOGLE_CLIENT_ID: string;
+		GOOGLE_CLIENT_SECRET: string;
+		FRONTEND_APP_URL: string;
+		TOKEN_SECRET: string;
 	};
 	Variables: {
-		db: NeonHttpDatabase;
+		db: Database;
 		environment: 'development' | 'production';
 	};
 }

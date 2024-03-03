@@ -1,45 +1,78 @@
-import { HTTPException } from 'hono/http-exception';
-import { eq } from 'drizzle-orm';
-
-/* Schemas */
-import { user } from '@lib/db/schema/user';
+import { decode } from 'hono/jwt';
 
 /* Types */
-import { SignUpDto } from './auth.dto';
+import {
+	DecodedUserProfile,
+	isDecodedUserProfile,
+	isGoogleOauthResponse,
+} from './auth.types';
+import { SignInDto } from './auth.dto';
 
-/* Utils */
-import { encryptPassword } from '@lib/utils/password';
+/* Models */
+import user from '../user';
+
+/* Helpers */
+import { emitToken } from './auth.helpers';
 
 const authService = {
-	signUp: async (dto: SignUpDto) => {
-		const { db, email, password } = dto;
+	signIn: async ({
+		db,
+		code,
+		googleClientId,
+		googleClientSecret,
+		tokenSecret,
+	}: SignInDto) => {
+		const response = await fetch('https://oauth2.googleapis.com/token', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				code,
+				client_id: googleClientId,
+				client_secret: googleClientSecret,
+				redirect_uri: 'postmessage',
+				grant_type: 'authorization_code',
+				scopes: 'email profile',
+			}),
+		});
 
-		const [emailAlreadyExists] = await db
-			.select({ email: user.email, password: user.password })
-			.from(user)
-			.where(eq(user.email, email));
+		const result = await response.json();
 
-		console.log(emailAlreadyExists.password);
-
-		const check = await verifyPassword(
-			'lalala123',
-			emailAlreadyExists.password,
-		);
-
-		console.log({ check });
-
-		if (emailAlreadyExists) {
-			throw new HTTPException(409, { message: 'Email already exists' });
+		if (!isGoogleOauthResponse(result)) {
+			throw Error('Error getting user info from Google');
 		}
 
-		const encryptedPassword = await encryptPassword(password);
+		const { id_token: idToken } = result;
+		const decodedToken: { header: string; payload: DecodedUserProfile } =
+			decode(idToken);
 
-		const newUserId = await db
-			.insert(user)
-			.values({ email, password: encryptedPassword })
-			.returning({ id: user.id });
+		if (!isDecodedUserProfile(decodedToken.payload)) {
+			if (!isGoogleOauthResponse(result)) {
+				throw Error('Error getting user info from Google');
+			}
+		}
 
-		return newUserId;
+		// If user exists, log in. Otherwise, create user and log in.
+		const existingUser = await user.service.findOneByEmail(
+			db,
+			decodedToken.payload.email,
+		);
+		if (!existingUser) {
+			const result = await user.service.createUser(db, {
+				email: decodedToken.payload.email,
+			});
+
+			if (!result?.length) {
+				throw Error('Error creating user.');
+			}
+			const userId = result[0].id;
+			const token = await emitToken({ id: userId }, tokenSecret);
+
+			return token;
+		} else {
+			return await emitToken({ id: existingUser.id }, tokenSecret);
+		}
 	},
 };
 

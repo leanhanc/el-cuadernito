@@ -28,6 +28,7 @@
 		"@hono/zod-validator": "^0.1.11",
 		"@neondatabase/serverless": "^0.7.2",
 		"argon2": "^0.31.2",
+		"axios": "^1.6.7",
 		"dotenv": "^16.4.1",
 		"drizzle-orm": "^0.29.3",
 		"hono": "^3.12.10",
