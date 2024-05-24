@@ -1,0 +1,52 @@
+# Logs
+logs
+*.log
+
+# MacOS
+.DS_Store
+
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+
+# TypeScript 
+*.tsbuildinfo
+next-env.d.ts
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production
+.env.local
+
+# Strapi
+
+license.txt
+exports
+*.cache
+dist
+build
+.strapi-updater.json
+init.sql
+apps/api/public
+# Next.js
+.next
+out
+
+
+# Caddyfile
+caddyfile
+

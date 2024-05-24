@@ -1,0 +1,36 @@
+{
+	"name": "@voz-y-cuento/api",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Voz y Cuento - Backend",
+	"license": "MIT",
+	"author": {
+		"name": "Empatika"
+	},
+	"scripts": {
+		"build": "ENV_PATH='../../.env.production' strapi build",
+		"dev": "ENV_PATH='../../.env.local' strapi develop",
+		"start": "ENV_PATH='../../.env.production' strapi start",
+		"strapi": "strapi"
+	},
+	"dependencies": {
+		"@strapi/plugin-cloud": "5.0.0-beta.8",
+		"@strapi/plugin-users-permissions": "5.0.0-beta.8",
+		"@strapi/provider-email-sendgrid": "^4.24.3",
+		"@strapi/strapi": "5.0.0-beta.8",
+		"pg": "8.8.0",
+		"react": "^18.0.0",
+		"react-dom": "^18.0.0",
+		"react-router-dom": "^6.0.0",
+		"strapi-plugin-slugify": "^2.3.8",
+		"styled-components": "^6.0.0"
+	},
+	"devDependencies": {},
+	"engines": {
+		"node": ">=18.0.0 <=20.x.x",
+		"npm": ">=6.0.0"
+	},
+	"strapi": {
+		"uuid": "8de723b6-baf8-4a0a-965c-bbc5b5198bbf"
+	}
+}

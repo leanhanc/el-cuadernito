@@ -1,0 +1,9 @@
+{
+	"name": "@voz-y-cuento/types",
+	"version": "0.1.0",
+	"description": "App typings",
+	"main": "index.ts",
+	"author": "Empatika",
+	"license": "MIT",
+	"private": true
+}

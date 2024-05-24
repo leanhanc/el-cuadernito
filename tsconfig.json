@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"incremental": true,
+		"outDir": "./dist",
+		"baseUrl": ".",
+		"moduleResolution": "Node",
+		"module": "CommonJS",
+		"target": "ES2018",
+		"sourceMap": true,
+		"lib": ["esnext"],
+		"esModuleInterop": true,
+		"alwaysStrict": true,
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"resolveJsonModule": true
+	},
+	"exclude": ["node_modules", "dist", "*.d.ts"]
+}
