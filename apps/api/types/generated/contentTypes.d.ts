@@ -1,5 +1,71 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
+export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
+	collectionName: 'courses';
+	info: {
+		singularName: 'course';
+		pluralName: 'courses';
+		displayName: 'Cursos';
+		description: '';
+	};
+	options: {
+		draftAndPublish: true;
+	};
+	attributes: {
+		name: Schema.Attribute.String &
+			Schema.Attribute.Required &
+			Schema.Attribute.Unique;
+		shortDescription: Schema.Attribute.Text;
+		isFree: Schema.Attribute.Boolean;
+		cardImage: Schema.Attribute.Media;
+		category: Schema.Attribute.Enumeration<
+			['Introductorio', 'Tem\u00E1tico', 'Laboratorio']
+		> &
+			Schema.Attribute.Required &
+			Schema.Attribute.DefaultTo<'Tem\u00E1tico'>;
+		longDescription: Schema.Attribute.Text;
+		arsPrice: Schema.Attribute.Decimal;
+		usdPrice: Schema.Attribute.Decimal;
+		syllabus: Schema.Attribute.Component<'list.syllabus', true>;
+		createdAt: Schema.Attribute.DateTime;
+		updatedAt: Schema.Attribute.DateTime;
+		publishedAt: Schema.Attribute.DateTime;
+		createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+			Schema.Attribute.Private;
+		updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+			Schema.Attribute.Private;
+		locale: Schema.Attribute.String;
+	};
+}
+
+export interface ApiStudentStudent extends Struct.CollectionTypeSchema {
+	collectionName: 'students';
+	info: {
+		singularName: 'student';
+		pluralName: 'students';
+		displayName: 'Estudiantes';
+		description: '';
+	};
+	options: {
+		draftAndPublish: false;
+	};
+	attributes: {
+		isAuthorized: Schema.Attribute.Boolean;
+		user: Schema.Attribute.Relation<
+			'oneToOne',
+			'plugin::users-permissions.user'
+		>;
+		createdAt: Schema.Attribute.DateTime;
+		updatedAt: Schema.Attribute.DateTime;
+		publishedAt: Schema.Attribute.DateTime;
+		createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+			Schema.Attribute.Private;
+		updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+			Schema.Attribute.Private;
+		locale: Schema.Attribute.String;
+	};
+}
+
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
 	collectionName: 'files';
 	info: {
@@ -827,6 +893,8 @@ export interface AdminTransferTokenPermission
 declare module '@strapi/strapi' {
 	export module Public {
 		export interface ContentTypeSchemas {
+			'api::course.course': ApiCourseCourse;
+			'api::student.student': ApiStudentStudent;
 			'plugin::upload.file': PluginUploadFile;
 			'plugin::upload.folder': PluginUploadFolder;
 			'plugin::i18n.locale': PluginI18NLocale;

@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "courses",
+  "info": {
+    "singularName": "course",
+    "pluralName": "courses",
+    "displayName": "Cursos",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "isFree": {
+      "type": "boolean"
+    },
+    "cardImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Introductorio",
+        "Temático",
+        "Laboratorio"
+      ],
+      "required": true,
+      "default": "Temático"
+    },
+    "longDescription": {
+      "type": "text"
+    },
+    "arsPrice": {
+      "type": "decimal"
+    },
+    "usdPrice": {
+      "type": "decimal"
+    },
+    "syllabus": {
+      "type": "component",
+      "repeatable": true,
+      "component": "list.syllabus"
+    }
+  }
+}
