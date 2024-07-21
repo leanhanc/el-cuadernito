@@ -16,7 +16,7 @@ export interface Translations {
 	};
 	assets: {
 		HEADING: string;
-		NEW_ASSET: string;
+		ADD_ASSET: string;
 		FORM_HEADING: string;
 	};
 }

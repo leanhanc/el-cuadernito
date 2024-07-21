@@ -14,6 +14,13 @@ const theme = createTheme({
 				component: Link,
 			} as LinkProps & { to: string },
 		},
+		MuiButton: {
+			styleOverrides: {
+				root: {
+					minHeight: '44px',
+				},
+			},
+		},
 		MuiListItemButton: {
 			defaultProps: {
 				LinkComponent: Link,

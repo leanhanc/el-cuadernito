@@ -25,7 +25,14 @@ module.exports = {
 		'no-console': 'error',
 		'no-unused-vars': 'off',
 		'no-await-in-loop': 'error',
-		'@typescript-eslint/no-floating-promises': 'off',
+		'@typescript-eslint/no-misused-promises': [
+			2,
+			{
+				checksVoidReturn: {
+					attributes: false,
+				},
+			},
+		],
 		'@typescript-eslint/consistent-type-imports': 'error',
 		'@typescript-eslint/no-unused-vars': [
 			'error',

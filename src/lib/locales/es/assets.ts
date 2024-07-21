@@ -1,5 +1,5 @@
 export default {
 	HEADING: 'Tus Activos',
-	NEW_ASSET: 'Nuevo Activo',
+	ADD_ASSET: 'Agregar Activo',
 	FORM_HEADING: 'Nuevo Activo',
 };

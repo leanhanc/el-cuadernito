@@ -1,5 +1,5 @@
 export default {
 	HEADING: 'Your Assets',
-	NEW_ASSET: 'Add New Asset',
+	ADD_ASSET: 'Add Asset',
 	FORM_HEADING: 'New Asset',
 };
