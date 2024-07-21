@@ -54,7 +54,6 @@ export default function AddAssetModal({ isOpen, handleClose }: Props) {
 	} = useForm<Schema>({
 		resolver: zodResolver(schema),
 		defaultValues: {
-			amount: 0,
 			assetType: 'account',
 			currency: 'ARS',
 		},
@@ -86,11 +85,12 @@ export default function AddAssetModal({ isOpen, handleClose }: Props) {
 							name="assetType"
 							render={({ field }) => (
 								<FormControl fullWidth>
-									<InputLabel id="source">Source</InputLabel>
+									<InputLabel id="source">{t('common', 'SOURCE')}</InputLabel>
 									<Select
-										id="source"
-										labelId="demo-simple-select-label"
 										{...field}
+										id="source"
+										label={t('common', 'SOURCE')}
+										labelId="source"
 									>
 										<MenuItem value="cash">{t('common', 'CASH')}</MenuItem>
 										<MenuItem value="account">
@@ -111,12 +111,13 @@ export default function AddAssetModal({ isOpen, handleClose }: Props) {
 							name="amount"
 							render={({ field }) => (
 								<FormControl fullWidth sx={{ mt: 4 }}>
-									<InputLabel id="amount">{t('common', 'AMOUNT')}</InputLabel>
 									<AmountInput
 										error={!!errors.amount}
 										fullWidth
 										helperText={errors.amount?.message}
-										{...field}
+										id="amount"
+										label={t('common', 'AMOUNT')}
+										onChange={field.onChange}
 									/>
 								</FormControl>
 							)}

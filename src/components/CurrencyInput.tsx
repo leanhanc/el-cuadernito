@@ -94,7 +94,6 @@ export default function AmountInput({ onChange, ...props }: AmountInputProps) {
 
 	return (
 		<TextField
-			{...props}
 			slotProps={{
 				htmlInput: {
 					inputMode: 'decimal',
@@ -103,6 +102,7 @@ export default function AmountInput({ onChange, ...props }: AmountInputProps) {
 			value={displayValue}
 			onBlur={handleBlur}
 			onChange={handleChange}
+			{...props}
 		/>
 	);
 }
