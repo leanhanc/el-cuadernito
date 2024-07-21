@@ -1,1 +1,1 @@
-export {default} from "./PWABadge"
+export { default } from './PWABadge';
