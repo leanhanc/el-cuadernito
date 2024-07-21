@@ -41,6 +41,7 @@ module.exports = {
 				varsIgnorePattern: '^_',
 			},
 		],
+		'react-compiler/react-compiler': 'error',
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'warn',
 		'react/jsx-filename-extension': 'off',
