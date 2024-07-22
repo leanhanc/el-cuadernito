@@ -8,8 +8,12 @@ import {
 	DialogContent,
 	DialogTitle,
 	FormControl,
+	FormControlLabel,
+	FormLabel,
 	InputLabel,
 	MenuItem,
+	Radio,
+	RadioGroup,
 	Select,
 	Stack,
 } from '@mui/material';
@@ -78,7 +82,7 @@ export default function AddAssetModal({ isOpen, handleClose }: Props) {
 
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<DialogContent>
-					<Stack mt={4}>
+					<Stack>
 						{/* Source (Select)  */}
 						<Controller
 							control={control}
@@ -111,10 +115,12 @@ export default function AddAssetModal({ isOpen, handleClose }: Props) {
 							name="amount"
 							render={({ field }) => (
 								<FormControl fullWidth sx={{ mt: 4 }}>
+									<InputLabel htmlFor="amount">
+										{t('common', 'AMOUNT')}
+									</InputLabel>
 									<AmountInput
 										error={!!errors.amount}
 										fullWidth
-										helperText={errors.amount?.message}
 										id="amount"
 										label={t('common', 'AMOUNT')}
 										onChange={field.onChange}
@@ -122,6 +128,36 @@ export default function AddAssetModal({ isOpen, handleClose }: Props) {
 								</FormControl>
 							)}
 						/>
+
+						{/* Currency (Radio Inputs)  */}
+						<FormControl component="fieldset" sx={{ mt: 4 }}>
+							<FormLabel component="legend" id="currency">
+								Currency
+							</FormLabel>
+							<Controller
+								control={control}
+								name="currency"
+								render={({ field }) => (
+									<RadioGroup
+										{...field}
+										aria-labelledby="currency"
+										row
+										sx={{ mt: 1 }}
+									>
+										<FormControlLabel
+											control={<Radio />}
+											label="USD"
+											value="USD"
+										/>
+										<FormControlLabel
+											control={<Radio />}
+											label="ARS"
+											value="ARS"
+										/>
+									</RadioGroup>
+								)}
+							/>
+						</FormControl>
 					</Stack>
 				</DialogContent>
 

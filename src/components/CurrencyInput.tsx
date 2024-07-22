@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
 /* MUI */
-import { TextField } from '@mui/material';
+import { InputAdornment, OutlinedInput } from '@mui/material';
 
 /* Hooks */
 import useTranslations from '@/lib/hooks/useTranslations';
 
 /* Types */
-import type { TextFieldProps } from '@mui/material';
+import type { OutlinedInputProps } from '@mui/material';
 
-interface AmountInputProps extends Omit<TextFieldProps, 'onChange'> {
+interface AmountInputProps extends Omit<OutlinedInputProps, 'onChange'> {
 	onChange: (value: number) => void;
 }
 
@@ -93,12 +93,8 @@ export default function AmountInput({ onChange, ...props }: AmountInputProps) {
 	};
 
 	return (
-		<TextField
-			slotProps={{
-				htmlInput: {
-					inputMode: 'decimal',
-				},
-			}}
+		<OutlinedInput
+			startAdornment={<InputAdornment position="start">$</InputAdornment>}
 			value={displayValue}
 			onBlur={handleBlur}
 			onChange={handleChange}
