@@ -12,7 +12,7 @@ module.exports = {
 		'plugin:react/recommended',
 		'plugin:jsx-a11y/recommended',
 	],
-	plugins: ['react-refresh', 'react-hooks'],
+	plugins: ['react-refresh', 'react-hooks', 'react-compiler'],
 	ignorePatterns: ['*.config.ts', '.eslintrc.cjs', 'dist', 'migrate.js'],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {

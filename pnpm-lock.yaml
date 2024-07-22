@@ -39,6 +39,9 @@ importers:
       '@tanstack/router-plugin':
         specifier: ^1.45.3
         version: 1.45.3(vite@5.3.4(@types/node@20.14.11)(terser@5.31.3))
+      dexie:
+        specifier: ^4.0.8
+        version: 4.0.8
       react:
         specifier: rc
         version: 19.0.0-rc-512b09b2-20240718
@@ -1753,6 +1756,9 @@ packages:
   detect-libc@2.0.3:
     resolution: {integrity: sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==}
     engines: {node: '>=8'}
+
+  dexie@4.0.8:
+    resolution: {integrity: sha512-1G6cJevS17KMDK847V3OHvK2zei899GwpDiqfEXHP1ASvme6eWJmAp9AU4s1son2TeGkWmC0g3y8ezOBPnalgQ==}
 
   dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
@@ -5042,6 +5048,8 @@ snapshots:
   defu@6.1.4: {}
 
   detect-libc@2.0.3: {}
+
+  dexie@4.0.8: {}
 
   dir-glob@3.0.1:
     dependencies:
