@@ -10,4 +10,6 @@ export default {
 	INVESTMENT: 'Investment',
 	OTHER: 'Other',
 	AMOUNT: 'Amount',
+	DESCRIPTION: 'Description',
+	CURRENCY: 'Currency',
 };

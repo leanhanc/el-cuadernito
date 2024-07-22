@@ -10,4 +10,6 @@ export default {
 	INVESTMENT: 'Inversión',
 	OTHER: 'Otro',
 	AMOUNT: 'Monto',
+	DESCRIPTION: 'Descripción',
+	CURRENCY: 'Moneda',
 };

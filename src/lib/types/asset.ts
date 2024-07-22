@@ -3,6 +3,7 @@ export interface Asset {
 	amount: number;
 	asset_type: 'account' | 'cash' | 'investment' | 'other';
 	currency: 'USD' | 'ARS';
-	bank?: string | null;
-	updated_at: Date;
+	holder?: string | null;
+	description?: string;
+	updated_at: string;
 }

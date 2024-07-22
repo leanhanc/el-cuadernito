@@ -34,7 +34,11 @@ const theme = createTheme({
 			},
 		},
 	},
-	palette: { mode: 'dark', primary: { main: '#DF4601' } },
+	palette: {
+		contrastThreshold: 4.5,
+		mode: 'dark',
+		primary: { main: '#E56B33' },
+	},
 });
 
 export default theme;

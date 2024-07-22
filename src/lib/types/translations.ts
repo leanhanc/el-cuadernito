@@ -13,11 +13,14 @@ export interface Translations {
 		INVESTMENT: string;
 		OTHER: string;
 		AMOUNT: string;
+		DESCRIPTION: string;
+		CURRENCY: string;
 	};
 	assets: {
 		HEADING: string;
 		ADD_ASSET: string;
 		FORM_HEADING: string;
+		HOLDER: string;
 	};
 }
 

@@ -16,6 +16,8 @@ import {
 	RadioGroup,
 	Select,
 	Stack,
+	TextField,
+	Typography,
 } from '@mui/material';
 
 /* Types */
@@ -32,6 +34,7 @@ import useTranslations from '@/lib/hooks/useTranslations';
 
 /* Components */
 import AmountInput from '@/components/CurrencyInput';
+import db from '@/lib/db/db';
 
 interface Props {
 	isOpen: boolean;
@@ -60,13 +63,23 @@ export default function AddAssetModal({ isOpen, handleClose }: Props) {
 		defaultValues: {
 			assetType: 'account',
 			currency: 'ARS',
+			description: '',
+			holder: '',
 		},
 	});
 
 	/* Handlers */
-	const onSubmit: SubmitHandler<Schema> = (data) => {
+	const onSubmit: SubmitHandler<Schema> = async (data) => {
 		// eslint-disable-next-line no-console
 		console.log(data);
+		await db.assets.add({
+			amount: data.amount,
+			asset_type: data.assetType,
+			currency: data.currency,
+			holder: data.holder,
+			description: data.description,
+			updated_at: Date.now().toLocaleString(),
+		});
 	};
 
 	return (
@@ -109,55 +122,104 @@ export default function AddAssetModal({ isOpen, handleClose }: Props) {
 							)}
 						/>
 
-						{/* Amount (Input)  */}
+						<Stack
+							alignItems="center"
+							direction="row"
+							justifyContent="space-between"
+						>
+							{/* Amount (Input)  */}
+							<Controller
+								control={control}
+								name="amount"
+								render={({ field }) => (
+									<FormControl sx={{ mt: 4 }}>
+										<InputLabel htmlFor="amount">
+											{t('common', 'AMOUNT')}
+										</InputLabel>
+										<AmountInput
+											error={!!errors.amount}
+											fullWidth
+											id="amount"
+											label={t('common', 'AMOUNT')}
+											onChange={field.onChange}
+										/>
+										{errors.amount && (
+											<Typography color="error" sx={{ mt: 1 }}>
+												{errors.amount.message}
+											</Typography>
+										)}
+									</FormControl>
+								)}
+							/>
+
+							{/* Currency (Radio Inputs)  */}
+							<FormControl component="fieldset" sx={{ mt: 3.5 }}>
+								<FormLabel
+									component="legend"
+									id="currency"
+									sx={{ fontSize: '14px' }}
+								>
+									Currency
+								</FormLabel>
+								<Controller
+									control={control}
+									name="currency"
+									render={({ field }) => (
+										<RadioGroup
+											{...field}
+											aria-labelledby="currency"
+											row
+											sx={{ mt: 1 }}
+										>
+											<FormControlLabel
+												control={<Radio />}
+												label="USD"
+												value="USD"
+											/>
+											<FormControlLabel
+												control={<Radio />}
+												label="ARS"
+												value="ARS"
+											/>
+										</RadioGroup>
+									)}
+								/>
+							</FormControl>
+						</Stack>
+
+						{/* Description (Input)  */}
 						<Controller
 							control={control}
-							name="amount"
+							name="description"
 							render={({ field }) => (
 								<FormControl fullWidth sx={{ mt: 4 }}>
-									<InputLabel htmlFor="amount">
-										{t('common', 'AMOUNT')}
-									</InputLabel>
-									<AmountInput
-										error={!!errors.amount}
+									<TextField
+										error={!!errors.description}
 										fullWidth
-										id="amount"
-										label={t('common', 'AMOUNT')}
-										onChange={field.onChange}
+										id="description"
+										label={t('common', 'DESCRIPTION')}
+										{...field}
 									/>
 								</FormControl>
 							)}
 						/>
 
-						{/* Currency (Radio Inputs)  */}
-						<FormControl component="fieldset" sx={{ mt: 4 }}>
-							<FormLabel component="legend" id="currency">
-								Currency
-							</FormLabel>
-							<Controller
-								control={control}
-								name="currency"
-								render={({ field }) => (
-									<RadioGroup
+						{/* Holder (Input)  */}
+						<Controller
+							control={control}
+							name="holder"
+							render={({ field }) => (
+								<FormControl fullWidth sx={{ mt: 4 }}>
+									<TextField
+										error={!!errors.holder}
+										fullWidth
+										id="holder"
+										label={t('assets', 'HOLDER')}
 										{...field}
-										aria-labelledby="currency"
-										row
-										sx={{ mt: 1 }}
-									>
-										<FormControlLabel
-											control={<Radio />}
-											label="USD"
-											value="USD"
-										/>
-										<FormControlLabel
-											control={<Radio />}
-											label="ARS"
-											value="ARS"
-										/>
-									</RadioGroup>
-								)}
-							/>
-						</FormControl>
+									/>
+								</FormControl>
+							)}
+						/>
 					</Stack>
 				</DialogContent>
 
