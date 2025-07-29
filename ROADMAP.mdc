@@ -1,0 +1,160 @@
+---
+description: This is helpful when scaffolding new files and folders, taking architectural decisions and when needing general context about the projects and the technical decisions taken.
+alwaysApply: false
+---
+
+## description: Cuadernito roadmap with Livestore + Cloudflare + SQLite
+
+# 🗓 Cuadernito Roadmap (2025)
+
+## 🧱 Architecture Overview
+
+| Layer           | Technology                             | Purpose                                          |
+| --------------- | -------------------------------------- | ------------------------------------------------ |
+| **Mobile App**  | Expo + SQLite via Livestore            | Offline-first, reactive client.                  |
+| **Sync Engine** | Livestore (Cloudflare Durable Objects) | Sync + conflict resolution, bi-directional flow. |
+| **Backend API** | Hono (Bun) on Cloudflare Workers       | Auth, pricing, metadata APIs.                    |
+| **Auth**        | BetterAuth + D1                        | Secure email/social login & sessions.            |
+| **Voice Input** | Whisper.cpp (offline)                  | Premium voice expense input.                     |
+| **Payments**    | MercadoPago / Cafecito                 | Subscription-based premium tier.                 |
+
+## 📁 Folder Structure
+
+```
+/apps
+  /mobile         (Expo + Livestore client)
+  /worker         (Livestore sync server: Cloudflare Durable Object)
+  /backend        (API: Hono + BetterAuth)
+/packages
+  /env            (shared constants + utils)
+/infra
+  wrangler config, DB schema, etc.
+```
+
+## 🥇 Phase 1 — Core Livestore App + Sync (2–3 weeks)
+
+- ✅ Set up Expo app with Bun monorepo (mobile excluded).
+- ✅ Define Livestore tables and schema.
+- ✅ Use Livestore client to manage SQLite state locally.
+- ✅ Deploy Livestore sync server on Cloudflare Worker (`@livestore/sync-cf`).
+- ✅ Add manual "Sync" toggle in app: switch between offline-only and sync mode.
+- ✅ Validate sync end-to-end for premium user account.
+- ✅ Build minimal UIs:
+  - Home (summary)
+  - Add Expense (single form)
+  - Expense list (read from Livestore)
+
+- ✅ Integrate USD Blue/MEP fetcher.
+
+> 🎯 Goal: Prove that offline and sync modes both work reliably before expanding feature set.
+
+## 🥈 Phase 2 — Auth Integration (2 weeks)
+
+- ✅ Add BetterAuth with Cloudflare D1.
+- ✅ Auth token integration with Livestore sync client.
+- ✅ Secure write/pull access based on user.
+- ✅ Store userID with synced data.
+- ✅ Add logout, session refresh flows.
+
+## 🥉 Phase 3 — Premium Features (3–4 weeks)
+
+- ✅ Whisper.cpp integration (offline voice input).
+- ✅ Inflation-aware budgeting (INDEC + private indices).
+- ✅ Multi-currency wallet support (ARS, USD, crypto).
+- ✅ Salary value alerts (real wage tracker).
+- ✅ Add premium flags in D1 + gated logic in app.
+- ✅ Integrate MercadoPago or Cafecito payments.
+
+## 🏁 Phase 4 — Polish & Launch (1–2 weeks)
+
+- ✅ UX/UI refinement (animations, error states).
+- ✅ Local analytics + privacy-first tracking (PostHog/LogSnag).
+- ✅ Cloudflare error monitoring (e.g. Sentry, console hooks).
+- ✅ Publish on Play Store (Argentina first).
+- ✅ Launch landing page + pricing comparison.
+
+## 💰 Pricing Model
+
+| Tier        | Features                                              | Price (ARS) |
+| ----------- | ----------------------------------------------------- | ----------- |
+| **Free**    | Offline expenses, budgets, 1 wallet.                  | \$0         |
+| **Premium** | Sync, Whisper, inflation, salary alerts, multi-wallet | \$999/mo    |
+
+---
+
+## description: Cuadernito roadmap with Livestore + Cloudflare + SQLite
+
+# 🗓 Cuadernito Roadmap (2025)
+
+## 🧱 Architecture Overview
+
+| Layer           | Technology                             | Purpose                                          |
+| --------------- | -------------------------------------- | ------------------------------------------------ |
+| **Mobile App**  | Expo + SQLite via Livestore            | Offline-first, reactive client.                  |
+| **Sync Engine** | Livestore (Cloudflare Durable Objects) | Sync + conflict resolution, bi-directional flow. |
+| **Backend API** | Hono (Bun) on Cloudflare Workers       | Auth, pricing, metadata APIs.                    |
+| **Auth**        | BetterAuth + D1                        | Secure email/social login & sessions.            |
+| **Voice Input** | Whisper.cpp (offline)                  | Premium voice expense input.                     |
+| **Payments**    | MercadoPago / Cafecito                 | Subscription-based premium tier.                 |
+
+## 📁 Folder Structure
+
+```
+/apps
+  /mobile         (Expo + Livestore client)
+  /worker         (Livestore sync server: Cloudflare Durable Object)
+  /backend        (API: Hono + BetterAuth)
+/packages
+  /env            (shared constants + utils)
+/infra
+  wrangler config, DB schema, etc.
+```
+
+## 🥇 Phase 1 — Core Livestore App + Sync (2–3 weeks)
+
+- ✅ Set up Expo app with Bun monorepo (mobile excluded).
+- ✅ Define Livestore tables and schema.
+- ✅ Use Livestore client to manage SQLite state locally.
+- ✅ Deploy Livestore sync server on Cloudflare Worker (`@livestore/sync-cf`).
+- ✅ Add manual "Sync" toggle in app: switch between offline-only and sync mode.
+- ✅ Validate sync end-to-end for premium user account.
+- ✅ Build minimal UIs:
+  - Home (summary)
+  - Add Expense (single form)
+  - Expense list (read from Livestore)
+
+- ✅ Integrate USD Blue/MEP fetcher.
+
+> 🎯 Goal: Prove that offline and sync modes both work reliably before expanding feature set.
+
+## 🥈 Phase 2 — Auth Integration (2 weeks)
+
+- ✅ Add BetterAuth with Cloudflare D1.
+- ✅ Auth token integration with Livestore sync client.
+- ✅ Secure write/pull access based on user.
+- ✅ Store userID with synced data.
+- ✅ Add logout, session refresh flows.
+
+## 🥉 Phase 3 — Premium Features (3–4 weeks)
+
+- ✅ Whisper.cpp integration (offline voice input).
+- ✅ Inflation-aware budgeting (INDEC + private indices).
+- ✅ Multi-currency wallet support (ARS, USD, crypto).
+- ✅ Salary value alerts (real wage tracker).
+- ✅ Add premium flags in D1 + gated logic in app.
+- ✅ Integrate MercadoPago or Cafecito payments.
+
+## 🏁 Phase 4 — Polish & Launch (1–2 weeks)
+
+- ✅ UX/UI refinement (animations, error states).
+- ✅ Local analytics + privacy-first tracking (PostHog/LogSnag).
+- ✅ Cloudflare error monitoring (e.g. Sentry, console hooks).
+- ✅ Publish on Play Store (Argentina first).
+- ✅ Launch landing page + pricing comparison.
+
+## 💰 Pricing Model
+
+| Tier        | Features                                              | Price (ARS) |
+| ----------- | ----------------------------------------------------- | ----------- |
+| **Free**    | Offline expenses, budgets, 1 wallet.                  | \$0         |
+| **Premium** | Sync, Whisper, inflation, salary alerts, multi-wallet | \$999/mo    |
