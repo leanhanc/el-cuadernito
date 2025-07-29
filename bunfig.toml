@@ -1,0 +1,9 @@
+logLevel = "debug"
+telemetry = false
+workspace = true
+
+[run]
+bun = true
+
+[install]
+hoist = true

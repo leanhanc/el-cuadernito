@@ -1,0 +1,21 @@
+{
+	"name": "@el-cuadernito/env",
+	"version": "0.0.1",
+	"private": true,
+	"main": "./src/server.ts",
+	"module": "./src/server.ts",
+	"types": "./src/server.ts",
+	"scripts": {
+		"dev": "bun run src/server.ts --watch"
+	},
+	"exports": {
+		"./server": {
+			"types": "./src/server.ts",
+			"import": "./src/server.ts",
+			"default": "./src/server.ts"
+		}
+	},
+	"devDependencies": {
+		"bun-types": "latest"
+	}
+}

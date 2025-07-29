@@ -1,0 +1,42 @@
+{
+	"editor.formatOnSave": true,
+	"eslint.useFlatConfig": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "always",
+		"source.fixAll.ruff": "always"
+	},
+	"files.readonlyInclude": {
+		"**/routeTree.gen.ts": true,
+		"bun.lock": true
+	},
+	"files.watcherExclude": {
+		"**/routeTree.gen.ts": true,
+		"bun.lock": true,
+		"**/*.svg": true
+	},
+	"search.exclude": {
+		"**/routeTree.gen.ts": true,
+		"bun.lock": true,
+		"**/*.svg": true
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"material-icon-theme.activeIconPack": "nest",
+	"material-icon-theme.files.associations": {
+		"wrangler.dev.jsonc": "wrangler"
+	}
+}

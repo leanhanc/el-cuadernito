@@ -1,0 +1,26 @@
+{
+	"name": "el-cuadernito-backend",
+	"version": "0.0.1",
+	"description": "El Cuadernito Backend",
+	"type": "module",
+	"author": "Leandro Hanc",
+	"scripts": {
+		"dev": "bun run src/index.ts --watch",
+		"build": "bun build --target browser",
+		"cf:dev": "wrangler dev --persist-to=cuadernito-dev.sqlite --config wrangler.dev.jsonc",
+		"cf:deploy": "wrangler publish --config wrangler.jsonc",
+		"test": "bun test",
+		"test:watch": "bun test --watch",
+		"type-check": "bun type-check",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"format": "prettier .",
+		"format:fix": "prettier . --write"
+	},
+	"dependencies": {
+		"@el-cuadernito/env": "workspace:*",
+		"better-auth": "^1.2.9",
+		"hono": "^4.7.11",
+		"hono-pino": "^0.8.0"
+	}
+}

@@ -1,0 +1,62 @@
+# Node / Bun
+node_modules/
+
+# Cloudflare
+wrangler.dev.jsonc
+wrangler.dev.toml
+
+# Local-only DB file
+cuadernito-dev.sqlite
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs and temp
+*.log
+*.tmp
+*.swp
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Docker
+*.pid
+*.pid.lock
+docker-compose.override.yml
+
+# Coverage / test
+coverage/
+*.cover
+.hypothesis/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# EAS
+.eas/
+bun.lockb.bak
+
