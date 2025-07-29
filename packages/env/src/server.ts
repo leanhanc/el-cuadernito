@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { config } from 'dotenv';
 import { join, resolve } from 'path';
 import { existsSync } from 'fs';

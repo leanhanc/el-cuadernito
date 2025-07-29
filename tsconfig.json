@@ -25,8 +25,7 @@
 		"baseUrl": ".",
 		"paths": {
 			"@backend/*": ["apps/backend/*"],
-			"@mobile/*": ["apps/mobile/*"],
-			
+			"@mobile/*": ["apps/mobile/*"]
 		},
 		"outDir": "./dist"
 	},

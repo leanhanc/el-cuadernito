@@ -10,9 +10,7 @@ export const baseSchema = z.object({
 		.default('info'),
 });
 
-export const serverSchema = baseSchema.extend({
-
-});
+export const serverSchema = baseSchema.extend({});
 
 /* Types */
 export type BaseEnv = z.infer<typeof baseSchema>;
