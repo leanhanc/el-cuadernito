@@ -10,8 +10,13 @@ export const baseSchema = z.object({
 		.default('info'),
 });
 
+export const mobileSchema = baseSchema.extend({
+	API_URL: z.url(),
+});
+
 export const serverSchema = baseSchema.extend({});
 
 /* Types */
 export type BaseEnv = z.infer<typeof baseSchema>;
 export type ServerEnv = z.infer<typeof serverSchema>;
+export type MobileEnv = z.infer<typeof mobileSchema>;

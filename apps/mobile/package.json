@@ -10,9 +10,17 @@
   },
   "dependencies": {
     "expo": "~53.0.20",
-    "expo-status-bar": "~2.2.3",
+    "expo-constants": "^17.1.7",
+    "expo-linking": "^7.1.7",
+    "expo-router": "^5.1.4",
+    "expo-status-bar": "^2.2.3",
+    "react": "19.0.0",
     "react-native": "0.79.5",
-    "react": "19.0.0"
+    "react-native-edge-to-edge": "^1.6.2",
+    "react-native-nitro-modules": "^0.27.2",
+    "react-native-safe-area-context": "^5.5.2",
+    "react-native-screens": "^4.13.1",
+    "react-native-unistyles": "^3.0.7"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2"

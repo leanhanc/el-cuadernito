@@ -2,6 +2,7 @@
 	"expo": {
 		"name": "el-cuadernito-mobile",
 		"slug": "el-cuadernito-mobile",
+		"scheme": "el-cuadernito-mobile",
 		"version": "0.0.1",
 		"orientation": "portrait",
 		"icon": "./assets/icon.png",
@@ -13,7 +14,8 @@
 			"backgroundColor": "#ffffff"
 		},
 		"ios": {
-			"supportsTablet": true
+			"supportsTablet": false,
+			"bundleIdentifier": "com.leanhanc.elcuadernitomobile"
 		},
 		"android": {
 			"adaptiveIcon": {
@@ -25,6 +27,12 @@
 		},
 		"web": {
 			"favicon": "./assets/favicon.png"
+		},
+		"expo": {
+			"plugins": ["expo-router"]
+		},
+		"experiments": {
+			"typedRoutes": true
 		}
 	}
 }

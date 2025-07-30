@@ -25,10 +25,12 @@
 		"baseUrl": ".",
 		"paths": {
 			"@backend/*": ["apps/backend/*"],
-			"@mobile/*": ["apps/mobile/*"]
+			"@mobile/*": ["apps/mobile/*"],
+			"@env": ["packages/env/src"],
+			"@livestore": ["packages/livestore/src"]
 		},
 		"outDir": "./dist"
 	},
 	"exclude": ["node_modules", "dist"],
-	"include": ["**/*.ts", "**/*.tsx"]
+	"include": ["**/*.ts", "**/*.tsx", "packages/livestore/tsconfig.json"]
 }

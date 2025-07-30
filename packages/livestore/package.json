@@ -1,0 +1,15 @@
+{
+	"name": "@el-cuadernito/livestore",
+	"version": "0.0.1",
+	"private": true,
+	"main": "./src/schema.ts",
+	"module": "./src/schema.ts",
+	"types": "./src/schema.ts",
+	"exports": {
+		"./schema": {
+			"types": "./src/schema.ts",
+			"import": "./src/schema.ts",
+			"default": "./src/schema.ts"
+		}
+	}
+}

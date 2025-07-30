@@ -1,4 +1,4 @@
-package com.leanhanc.mobile
+package com.leanhanc.elcuadernitomobile
 
 import android.os.Build
 import android.os.Bundle

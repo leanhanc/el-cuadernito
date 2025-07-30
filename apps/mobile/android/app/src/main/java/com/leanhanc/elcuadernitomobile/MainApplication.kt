@@ -1,4 +1,4 @@
-package com.leanhanc.mobile
+package com.leanhanc.elcuadernitomobile
 
 import android.app.Application
 import android.content.res.Configuration

@@ -38,5 +38,8 @@
 	"material-icon-theme.activeIconPack": "nest",
 	"material-icon-theme.files.associations": {
 		"wrangler.dev.jsonc": "wrangler"
+	},
+	"material-icon-theme.folders.associations": {
+		"livestore": "database"
 	}
 }

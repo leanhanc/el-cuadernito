@@ -70,6 +70,4 @@ function loadServerEnv(): ServerEnv {
 	return parsed.data;
 }
 
-const env = loadServerEnv();
-
-export default env;
+export const serverEnv = loadServerEnv();
