@@ -35,10 +35,18 @@
 		"url": "https://github.com/leanhanc/el-cuadernito/issues"
 	},
 	"homepage": "https://github.com/leanhanc/el-cuadernito#README",
+	"dependencies": {
+		"dotenv": "^17.2.1",
+		"pino": "^9.7.0",
+		"pino-pretty": "^13.0.0",
+		"react": "19.0.0",
+		"zod": "^4.0.13"
+	},
 	"devDependencies": {
 		"@eslint/js": "^9.32.0",
 		"@types/bun": "^1.2.19",
 		"@types/node": "^24.1.0",
+		"@types/react": "~19.0.10",
 		"concurrently": "^9.2.0",
 		"eslint": "^9.32.0",
 		"eslint-config-expo": "~9.2.0",
@@ -54,14 +62,8 @@
 	"engines": {
 		"bun": ">=1.2.19"
 	},
-	"dependencies": {
-		"dotenv": "^17.2.1",
-		"pino": "^9.7.0",
-		"pino-pretty": "^13.0.0",
-		"zod": "^4.0.13"
-	},
 	"workspaces": [
-		"apps/backend",
+		"apps/*",
 		"packages/*"
 	]
 }

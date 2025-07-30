@@ -1,19 +1,31 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "el-cuadernito-backend",
+	"name": "cuadernito-sync",
 	"main": "src/index.ts",
 	"compatibility_date": "2025-07-29",
 	"observability": {
-		"enabled": true,
+	  "enabled": true
 	},
-	"d1_databases": [
+	"durable_objects": {
+	  "bindings": [
 		{
-			"binding": "DB",
-			"database_name": "cuadernito-db",
-			"database_id": "__REPLACE_WITH_D1_PROD_DB_ID__",
-		},
-	],
-	"dev": {
-		"port": 4000,
+		  "name": "WEBSOCKET_SERVER",
+		  "class_name": "WebSocketServer"
+		}
+	  ]
 	},
-}
+	"migrations": [
+	  {
+		"tag": "v1",
+		"new_classes": ["WebSocketServer"]
+	  }
+	],
+	"d1_databases": [
+	  {
+		"binding": "DB",
+		"database_name": "cuadernito-db",
+		"database_id": "__REPLACE_WITH_D1_PROD_DB_ID__"
+	  }
+	]
+  }
+  

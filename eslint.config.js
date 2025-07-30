@@ -23,7 +23,7 @@ export default [
 	...configs.strictTypeChecked,
 
 	{
-		files: ['**/*.{js,jsx,ts,tsx}'],
+		files: ['**/*.{ts,tsx}'],
 		languageOptions: {
 			ecmaVersion: 'latest',
 			sourceType: 'module',
@@ -41,6 +41,7 @@ export default [
 				console: 'readonly',
 				process: 'readonly',
 				Bun: 'readonly',
+				NodeJS: 'readonly',
 			},
 		},
 		settings: {
@@ -51,10 +52,6 @@ export default [
 			},
 		},
 		rules: {
-			'@typescript-eslint/explicit-function-return-type': [
-				'warn',
-				{ allowExpressions: true },
-			],
 			'@typescript-eslint/no-unused-vars': [
 				'error',
 				{ argsIgnorePattern: '^_' },
