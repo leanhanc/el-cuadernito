@@ -1,0 +1,8 @@
+{
+  "android": {
+    "package": "com.leanhanc.elcuadernito"
+  },
+  "ios": {
+    "bundleIdentifier": "com.leanhanc.elcuadernito"
+  }
+}

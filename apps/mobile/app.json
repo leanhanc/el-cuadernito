@@ -6,7 +6,6 @@
 		"version": "0.0.1",
 		"orientation": "portrait",
 		"icon": "./assets/icon.png",
-		"userInterfaceStyle": "light",
 		"newArchEnabled": true,
 		"splash": {
 			"image": "./assets/splash-icon.png",
@@ -28,9 +27,20 @@
 		"web": {
 			"favicon": "./assets/favicon.png"
 		},
-		"expo": {
-			"plugins": ["expo-router"]
-		},
+		"plugins": [
+			"expo-router",
+			"expo-font",
+			"expo-sqlite",
+			[
+				"expo-build-properties",
+				{
+					"android": {
+						"usesCleartextTraffic": true
+					},
+					"ios": {}
+				}
+			]
+		],
 		"experiments": {
 			"typedRoutes": true
 		}

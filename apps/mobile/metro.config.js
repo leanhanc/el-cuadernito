@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 
 const { getDefaultConfig } = require('expo/metro-config');
-// const { addLiveStoreDevtoolsMiddleware } = require('@livestore/devtools-expo');
+const { addLiveStoreDevtoolsMiddleware } = require('@livestore/devtools-expo');
 const path = require('path');
 
 // Find the project and workspace directories
@@ -29,24 +29,8 @@ config.resolver.disableHierarchicalLookup = true;
 config.resolver.sourceExts = [...config.resolver.sourceExts, 'mjs', 'cjs'];
 
 // 5. Add Livestore devtools middleware
-// addLiveStoreDevtoolsMiddleware(config, {
-// 	schemaPath: './src/livestore/schema.ts',
-// });
-
-// 6. Ensure proper alias resolution for monorepo packages
-config.resolver.alias = {
-	'@monorepo/shared': path.resolve(monorepoRoot, 'packages/shared/src'),
-};
-
-// Optional: For better performance in large monorepos, we can limit watchFolders
-// to only the packages our app actually uses:
-/*
-const monorepoPackages = {
-  '@monorepo/shared': path.resolve(monorepoRoot, 'packages/shared'),
-};
-
-config.watchFolders = [projectRoot, ...Object.values(monorepoPackages)];
-config.resolver.extraNodeModules = monorepoPackages;
-*/
+addLiveStoreDevtoolsMiddleware(config, {
+	schemaPath: path.resolve(monorepoRoot, 'packages/livestore/src/schema.ts'),
+});
 
 module.exports = config;

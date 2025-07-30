@@ -14,6 +14,8 @@ module.exports = function (api) {
 					root: './',
 				},
 			],
+			'babel-plugin-transform-vite-meta-env',
+			'@babel/plugin-syntax-import-attributes',
 		],
 	};
 };
