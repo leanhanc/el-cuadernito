@@ -1,6 +1,6 @@
 import { State } from '@livestore/livestore';
 
-import { tables } from './schema';
+import { tables } from './tables';
 import { events } from './events';
 
 const materializers = State.SQLite.materializers(events, {

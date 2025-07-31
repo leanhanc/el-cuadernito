@@ -30,7 +30,7 @@ config.resolver.sourceExts = [...config.resolver.sourceExts, 'mjs', 'cjs'];
 
 // 5. Add Livestore devtools middleware
 addLiveStoreDevtoolsMiddleware(config, {
-	schemaPath: path.resolve(monorepoRoot, 'packages/livestore/src/schema.ts'),
+	schemaPath: path.resolve(monorepoRoot, 'packages/db/src/index.ts'),
 });
 
 module.exports = config;

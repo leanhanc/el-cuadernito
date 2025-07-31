@@ -27,10 +27,10 @@
 			"@backend/*": ["apps/backend/*"],
 			"@mobile/*": ["apps/mobile/*"],
 			"@env": ["packages/env/src"],
-			"@db": ["packages/livestore/src"]
+			"@db": ["packages/db/src"]
 		},
 		"outDir": "./dist"
 	},
 	"exclude": ["node_modules", "dist"],
-	"include": ["**/*.ts", "**/*.tsx", "packages/livestore/tsconfig.json"]
+	"include": ["**/*.ts", "**/*.tsx", "packages/db/tsconfig.json"]
 }
