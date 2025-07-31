@@ -27,7 +27,7 @@
 			"@backend/*": ["apps/backend/*"],
 			"@mobile/*": ["apps/mobile/*"],
 			"@env": ["packages/env/src"],
-			"@livestore": ["packages/livestore/src"]
+			"@db": ["packages/livestore/src"]
 		},
 		"outDir": "./dist"
 	},
