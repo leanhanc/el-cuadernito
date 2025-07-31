@@ -12,6 +12,7 @@ export const events = {
 			note: Schema.optional(Schema.String),
 			categoryId: Schema.optional(Schema.String),
 			subCategoryId: Schema.optional(Schema.String),
+			userId: Schema.String,
 			date: Schema.Date,
 			createdAt: Schema.Date,
 		}),
@@ -37,7 +38,14 @@ export const events = {
 		name: 'v1.ExpenseDeleted',
 		schema: Schema.Struct({
 			id: Schema.String,
-			deletedAt: Schema.Date,
+		}),
+	}),
+
+	createUser: Events.synced({
+		name: 'v1.CreateUser',
+		schema: Schema.Struct({
+			id: Schema.String,
+			isPremium: Schema.Boolean,
 		}),
 	}),
 };

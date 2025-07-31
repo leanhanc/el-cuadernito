@@ -15,6 +15,7 @@ const materializers = State.SQLite.materializers(events, {
 		subCategoryId,
 		date,
 		createdAt,
+		userId,
 	}) =>
 		tables.expenses.insert({
 			id,
@@ -26,6 +27,7 @@ const materializers = State.SQLite.materializers(events, {
 			categoryId,
 			subCategoryId,
 			date,
+			userId,
 			createdAt,
 			updatedAt: createdAt,
 		}),
@@ -38,8 +40,13 @@ const materializers = State.SQLite.materializers(events, {
 			})
 			.where({ id }),
 
-	'v1.ExpenseDeleted': ({ id, deletedAt }) =>
-		tables.expenses.update({ deletedAt }).where({ id }),
+	'v1.ExpenseDeleted': ({ id }) => tables.expenses.delete().where({ id }),
+
+	'v1.CreateUser': ({ id, isPremium }) =>
+		tables.users.insert({
+			id,
+			isPremium,
+		}),
 });
 
 export { materializers };

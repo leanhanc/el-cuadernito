@@ -1,6 +1,14 @@
 import { State, Schema } from '@livestore/livestore';
 
 export const tables = {
+	users: State.SQLite.table({
+		name: 'users',
+		columns: {
+			id: State.SQLite.text({ primaryKey: true, nullable: false }),
+			isPremium: State.SQLite.boolean({ nullable: false, default: false }),
+		},
+	}),
+
 	expenses: State.SQLite.table({
 		name: 'expenses',
 		columns: {
@@ -19,16 +27,13 @@ export const tables = {
 				nullable: false,
 				schema: Schema.DateFromNumber,
 			}),
+			userId: State.SQLite.text({ nullable: false }),
 			createdAt: State.SQLite.integer({
 				nullable: false,
 				schema: Schema.DateFromNumber,
 			}),
 			updatedAt: State.SQLite.integer({
 				nullable: false,
-				schema: Schema.DateFromNumber,
-			}),
-			deletedAt: State.SQLite.integer({
-				nullable: true,
 				schema: Schema.DateFromNumber,
 			}),
 		},
