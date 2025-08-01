@@ -15,10 +15,10 @@ import { schema, tables, events } from '@db';
 import '../lib/styles/unistyles';
 
 const storeId = `el-cuadernito-${process.env.NODE_ENV}`;
-const syncUrl = process.env.EXPO_PUBLIC_LIVESTORE_SYNC_URL;
+const syncUrl = 'ws://10.0.2.2:8787';
 
 const adapter = makePersistedAdapter({
-	sync: { backend: syncUrl ? makeCfSync({ url: syncUrl }) : undefined },
+	sync: { backend: makeCfSync({ url: syncUrl }) },
 });
 
 const InternalApp = () => {
@@ -35,6 +35,7 @@ export default function RootLayout() {
 		<LiveStoreProvider
 			adapter={adapter}
 			schema={schema}
+			syncPayload={{ authToken: 'insecure-token-change-me' }}
 			storeId={storeId}
 			batchUpdates={rerender}
 			renderLoading={(_) => <Text>Loading LiveStore ({_.stage})...</Text>}

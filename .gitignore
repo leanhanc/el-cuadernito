@@ -4,6 +4,7 @@ node_modules/
 # Cloudflare
 wrangler.dev.jsonc
 wrangler.dev.toml
+.wrangler/
 
 # Local-only DB file
 cuadernito-dev.sqlite
