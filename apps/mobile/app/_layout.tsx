@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import { Stack } from 'expo-router';
+import { Button, Text, View } from 'react-native';
 
 /* LiveStore */
 import { makePersistedAdapter } from '@livestore/adapter-expo';
 import { makeCfSync } from '@livestore/sync-cf';
 import { LiveStoreProvider } from '@livestore/react';
+import { nanoid } from '@livestore/livestore';
+
+/* DB */
+import { schema, tables, events } from '@db';
 
 /* Styles */
 import '../lib/styles/unistyles';
-
-/* Utils */
-import { schema } from '@db';
-import { Button, Text, View } from 'react-native';
 
 const storeId = `el-cuadernito-${process.env.NODE_ENV}`;
 const syncUrl = process.env.EXPO_PUBLIC_LIVESTORE_SYNC_URL;
@@ -50,6 +51,16 @@ export default function RootLayout() {
 						/>
 					</View>
 				);
+			}}
+			boot={(store) => {
+				if (store.query(tables.users.count()) === 0) {
+					store.commit(
+						events.createUser({
+							id: nanoid(8),
+							isPremium: true,
+						}),
+					);
+				}
 			}}
 		>
 			<InternalApp />
